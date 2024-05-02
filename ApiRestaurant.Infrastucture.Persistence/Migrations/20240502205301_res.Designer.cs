@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 {
     [DbContext(typeof(RestaurantContext))]
-    [Migration("20240502192635_restt")]
-    partial class restt
+    [Migration("20240502205301_res")]
+    partial class res
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,7 +39,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descripcion")
@@ -54,7 +53,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifyBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")

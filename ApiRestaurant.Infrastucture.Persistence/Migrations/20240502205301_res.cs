@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 {
-    public partial class restt : Migration
+    public partial class res : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,9 +19,9 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     CantidadPersonas = table.Column<int>(type: "int", nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModify = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>

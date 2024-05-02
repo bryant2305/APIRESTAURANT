@@ -37,7 +37,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descripcion")
@@ -52,7 +51,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifyBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")

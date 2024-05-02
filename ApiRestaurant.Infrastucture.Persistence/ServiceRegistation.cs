@@ -29,7 +29,7 @@ namespace ApiRestaurant.Infrastucture.Persistence
             }
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddTransient<IMesasRepository, IMesasRepository>();
+            services.AddTransient<IMesasRepository, MesasRepository>();
 
         }
     }

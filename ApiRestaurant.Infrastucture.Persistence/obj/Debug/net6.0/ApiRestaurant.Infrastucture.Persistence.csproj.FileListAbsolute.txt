@@ -17,3 +17,4 @@ C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastucture.Persistenc
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastucture.Persistence\obj\Debug\net6.0\ref\ApiRestaurant.Infrastucture.Persistence.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastucture.Persistence\bin\Debug\net6.0\Restaurant.Infraestructure.Shared.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastucture.Persistence\bin\Debug\net6.0\Restaurant.Infraestructure.Shared.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastucture.Persistence\obj\Debug\net6.0\ApiRestaurant.Infrastucture.Persistence.sourcelink.json

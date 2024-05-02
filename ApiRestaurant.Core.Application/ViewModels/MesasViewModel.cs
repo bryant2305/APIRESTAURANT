@@ -10,7 +10,7 @@ namespace ApiRestaurant.Core.Application.ViewModels
 {
     public class MesasViewModel
     {
-        public int ID { get; set; }
+        //public int ID { get; set; }
         public string Nombre { get; set; }
         public int CantidadPersonas { get; set; }
 

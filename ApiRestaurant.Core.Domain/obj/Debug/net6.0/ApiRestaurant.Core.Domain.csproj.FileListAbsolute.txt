@@ -9,3 +9,4 @@ C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\ne
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\refint\ApiRestaurant.Core.Domain.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.pdb
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ref\ApiRestaurant.Core.Domain.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.sourcelink.json

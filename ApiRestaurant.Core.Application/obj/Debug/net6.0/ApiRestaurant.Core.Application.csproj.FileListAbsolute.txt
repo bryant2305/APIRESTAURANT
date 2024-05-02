@@ -13,3 +13,4 @@ C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Deb
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\refint\ApiRestaurant.Core.Application.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.pdb
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ref\ApiRestaurant.Core.Application.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.sourcelink.json
