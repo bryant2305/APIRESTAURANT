@@ -1,0 +1,15 @@
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\bin\Debug\net6.0\ApiRestaurant.Core.Application.deps.json
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\bin\Debug\net6.0\ApiRestaurant.Core.Application.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\bin\Debug\net6.0\ApiRestaurant.Core.Application.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\bin\Debug\net6.0\ApiRestaurant.Core.Domain.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\bin\Debug\net6.0\ApiRestaurant.Core.Domain.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.csproj.AssemblyReference.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.AssemblyInfoInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.AssemblyInfo.cs
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.csproj.CoreCompileInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.csproj.CopyComplete
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\refint\ApiRestaurant.Core.Application.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ApiRestaurant.Core.Application.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Application\obj\Debug\net6.0\ref\ApiRestaurant.Core.Application.dll

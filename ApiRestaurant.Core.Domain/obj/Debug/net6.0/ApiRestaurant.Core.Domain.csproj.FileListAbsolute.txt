@@ -1,0 +1,11 @@
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\bin\Debug\net6.0\ApiRestaurant.Core.Domain.deps.json
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\bin\Debug\net6.0\ApiRestaurant.Core.Domain.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\bin\Debug\net6.0\ApiRestaurant.Core.Domain.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.AssemblyInfoInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.AssemblyInfo.cs
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.csproj.CoreCompileInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\refint\ApiRestaurant.Core.Domain.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ApiRestaurant.Core.Domain.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Core.Domain\obj\Debug\net6.0\ref\ApiRestaurant.Core.Domain.dll

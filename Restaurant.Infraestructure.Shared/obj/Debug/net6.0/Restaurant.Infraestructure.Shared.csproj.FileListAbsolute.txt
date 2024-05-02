@@ -1,0 +1,11 @@
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\bin\Debug\net6.0\Restaurant.Infraestructure.Shared.deps.json
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\bin\Debug\net6.0\Restaurant.Infraestructure.Shared.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\bin\Debug\net6.0\Restaurant.Infraestructure.Shared.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.AssemblyInfoInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.AssemblyInfo.cs
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.csproj.CoreCompileInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\refint\Restaurant.Infraestructure.Shared.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\ref\Restaurant.Infraestructure.Shared.dll

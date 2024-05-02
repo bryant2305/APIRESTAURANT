@@ -1,0 +1,17 @@
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.deps.json
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Core.Application.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Core.Domain.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Core.Application.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Core.Domain.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.csproj.AssemblyReference.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.AssemblyInfoInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.AssemblyInfo.cs
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.csproj.CoreCompileInputs.cache
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.csproj.CopyComplete
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\refint\ApiRestaurant.Infrastructure.Identity.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.pdb
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ref\ApiRestaurant.Infrastructure.Identity.dll
