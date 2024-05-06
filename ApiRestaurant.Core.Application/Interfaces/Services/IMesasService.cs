@@ -1,4 +1,4 @@
-﻿using ApiRestaurant.Core.Application.ViewModels;
+﻿using ApiRestaurant.Core.Application.ViewModels.Tables;
 using ApiRestaurant.Core.Domain.Entity;
 using System;
 using System.Collections.Generic;

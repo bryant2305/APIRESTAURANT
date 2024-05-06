@@ -29,6 +29,9 @@ builder.Services.AddAutoMapper(typeof(GeneralProfile));
 builder.Services.AddScoped<IMesasRepository, MesasRepository>();
 builder.Services.AddScoped<IGenericRepository<Mesas>, MesasRepository>(); // Registro de IGenericRepository<Mesas>
 builder.Services.AddScoped<IMesasService, MesasService>();
+builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
+builder.Services.AddScoped<IGenericRepository<Ingredient>, IngredientRepository>();
+builder.Services.AddScoped<IIngredientService, IngredientService>();
 
 var app = builder.Build();
 

@@ -14,7 +14,7 @@ namespace ApiRestaurant.Core.Application.Interfaces.Services
         Task<List<ViewModel>> GetAllAsync();
         Task<SaveViewModel> Add(SaveViewModel vm);
         Task Update(SaveViewModel vm, int ID);
-        Task<SaveViewModel> GetById(int Id);
-        Task Delete(int id);
+        Task<SaveViewModel> GetById(int ID);
+        Task Delete(int ID);
     }
 }

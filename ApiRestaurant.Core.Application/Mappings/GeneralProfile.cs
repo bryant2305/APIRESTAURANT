@@ -1,4 +1,5 @@
-﻿using ApiRestaurant.Core.Application.ViewModels;
+﻿using ApiRestaurant.Core.Application.ViewModels.Ingredients;
+using ApiRestaurant.Core.Application.ViewModels.Tables;
 using ApiRestaurant.Core.Domain.Entity;
 using AutoMapper;
 using System;
@@ -29,6 +30,19 @@ namespace ApiRestaurant.Core.Application.Mappings
                     .ForMember(x => x.LastModify, opt => opt.Ignore())
                     .ForMember(x => x.LastModifyBy, opt => opt.Ignore());
 
+            CreateMap<Ingredient, IngredientViewModel>()
+                   .ReverseMap()
+                       .ForMember(x => x.Created, opt => opt.Ignore())
+                       .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                       .ForMember(x => x.LastModifyBy, opt => opt.Ignore())
+                       .ForMember(x => x.LastModify, opt => opt.Ignore());
+
+            CreateMap<Ingredient, SaveIngredientViewModel>()
+                .ReverseMap()
+                    .ForMember(x => x.Created, opt => opt.Ignore())
+                    .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                    .ForMember(x => x.LastModify, opt => opt.Ignore())
+                    .ForMember(x => x.LastModifyBy, opt => opt.Ignore());
 
 
         }

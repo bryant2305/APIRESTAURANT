@@ -1,6 +1,6 @@
 ﻿using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
-using ApiRestaurant.Core.Application.ViewModels;
+using ApiRestaurant.Core.Application.ViewModels.Tables;
 using ApiRestaurant.Core.Domain.Entity;
 using AutoMapper;
 using System;

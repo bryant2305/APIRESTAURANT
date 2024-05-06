@@ -22,6 +22,35 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Ingredient", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModify")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifyBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Ingredient", (string)null);
+                });
+
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Mesas", b =>
                 {
                     b.Property<int>("ID")

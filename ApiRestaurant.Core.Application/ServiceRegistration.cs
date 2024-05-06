@@ -20,6 +20,7 @@ namespace ApiRestaurant.Core.Application
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<IMesasService, MesasService>();
+            services.AddTransient<IIngredientService, IngredientService>();
 
         }
     }

@@ -42,12 +42,17 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
             modelBuilder.Entity<Mesas>()
                 .ToTable("Mesas");
 
+            modelBuilder.Entity<Ingredient>().ToTable("Ingredient");
             #endregion
+
             #region "primary keys"
             modelBuilder.Entity<Mesas>().HasKey(x => x.ID);
+
+            modelBuilder.Entity<Ingredient>().HasKey(x => x.ID);
             #endregion
 
             #region "property config"
+            #region "Tables"
             modelBuilder.Entity<Mesas>().Property(medicos => medicos.Nombre).IsRequired();
 
             modelBuilder.Entity<Mesas>().Property(medicos => medicos.Descripcion).IsRequired();
@@ -55,6 +60,10 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
             modelBuilder.Entity<Mesas>().Property(medicos => medicos.Estado).IsRequired();
 
             modelBuilder.Entity<Mesas>().Property(medicos => medicos.CantidadPersonas).IsRequired();
+            #endregion
+            #region Ingredient
+            modelBuilder.Entity<Ingredient>().Property(medicos => medicos.Name).IsRequired();
+            #endregion
             #endregion
         }
 
