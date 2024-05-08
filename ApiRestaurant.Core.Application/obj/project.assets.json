@@ -1176,11 +1176,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj",
+      "projectUniqueName": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj",
       "projectName": "ApiRestaurant.Core.Application",
-      "projectPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj",
+      "projectPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj",
       "packagesPath": "C:\\Users\\bryan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\obj\\",
+      "outputPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1197,8 +1197,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj": {
-              "projectPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj"
+            "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj": {
+              "projectPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj"
             }
           }
         }

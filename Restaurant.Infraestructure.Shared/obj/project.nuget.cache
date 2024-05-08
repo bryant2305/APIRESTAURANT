@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IxuRk8j7OYmFqhA1EM23u+/SxVd/iemvmO0b3qSb+i691Hb2Ui54kbxihMZHuZT63mdgNjcvf/QqeEc+sJXYfg==",
+  "dgSpecHash": "RSatmQRBiPdAcEfVtCkwtPUli78o8vBZqUcWmAkEsFes4KCFzvY5J013WuuiUB624MVTGH9ierNRb9BPWlFNUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\Restaurant.Infraestructure.Shared.csproj",
+  "projectFilePath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\Restaurant.Infraestructure.Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

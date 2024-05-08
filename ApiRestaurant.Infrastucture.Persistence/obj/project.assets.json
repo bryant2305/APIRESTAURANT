@@ -2430,11 +2430,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Infrastucture.Persistence\\ApiRestaurant.Infrastucture.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Infrastucture.Persistence\\ApiRestaurant.Infrastucture.Persistence.csproj",
       "projectName": "ApiRestaurant.Infrastucture.Persistence",
-      "projectPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Infrastucture.Persistence\\ApiRestaurant.Infrastucture.Persistence.csproj",
+      "projectPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Infrastucture.Persistence\\ApiRestaurant.Infrastucture.Persistence.csproj",
       "packagesPath": "C:\\Users\\bryan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Infrastucture.Persistence\\obj\\",
+      "outputPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Infrastucture.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2451,11 +2451,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj": {
-              "projectPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj"
+            "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj": {
+              "projectPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj"
             },
-            "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\Restaurant.Infraestructure.Shared.csproj": {
-              "projectPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\Restaurant.Infraestructure.Shared.csproj"
+            "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\Restaurant.Infraestructure.Shared.csproj": {
+              "projectPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\Restaurant.Infraestructure.Shared.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj": {}
+    "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj": {
+    "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj",
         "projectName": "ApiRestaurant.Core.Domain",
-        "projectPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj",
+        "projectPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj",
         "packagesPath": "C:\\Users\\bryan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\obj\\",
+        "outputPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
