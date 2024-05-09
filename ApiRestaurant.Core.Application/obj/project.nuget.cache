@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1kqKnyvUiNKPf6HT+r31PghNPDkm+mnavMHF7F8eUwLkMX9hFfOEjL7BfAIiYuj/zO+pMlRadWT7MpsqfQCDmw==",
+  "dgSpecHash": "LxTp+rjeWu58nlyQmMBWie3B2Z8zTfsaKbm3gyyZJaVTOZ8XK9QWRy8WBBciWg+JjZvQ0mBqfMblfFAZmJM7YQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj",
+  "projectFilePath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Application\\ApiRestaurant.Core.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bryan\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\bryan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

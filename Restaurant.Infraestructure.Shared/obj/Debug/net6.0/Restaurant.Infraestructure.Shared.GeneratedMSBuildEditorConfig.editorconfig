@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Restaurant.Infraestructure.Shared
-build_property.ProjectDir = C:\Users\bryan\Source\Repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\
+build_property.ProjectDir = C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

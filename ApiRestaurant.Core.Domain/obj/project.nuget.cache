@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F2oybGMJqk7QDX5nVu6VUhODmZf3scdLK3YKPJeeFJV2MlVsNzmp0KL7qobkcvCdVPLEm8pTCFDpe/YUFCQotQ==",
+  "dgSpecHash": "0+yAVCNrcBezkKabt+o2GoD23u4IQzvXJp1IjlYt5SdqKHe+QL7Z0o+TcJHOceVicEXbKAah52j/K+KmmRJXPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj",
+  "projectFilePath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\ApiRestaurant.Core.Domain\\ApiRestaurant.Core.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
