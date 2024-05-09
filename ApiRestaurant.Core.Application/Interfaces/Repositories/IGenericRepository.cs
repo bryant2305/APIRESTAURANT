@@ -14,6 +14,6 @@ namespace ApiRestaurant.Core.Application.Interfaces.Repositories
         Task DeleteAsync(Entity entity);
         Task<List<Entity>> GetAllAsync();
         Task<Entity> GetByIdAsync(int Id);
-
+        Task<List<Entity>> GetAllWhitIncludes(List<String> properties);
     }
 }

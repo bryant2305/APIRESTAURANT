@@ -22,6 +22,80 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Dish", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("AmountPeople")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModify")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifyBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Dish", (string)null);
+                });
+
+            modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.DishIngredients", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DishId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModify")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifyBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DishId");
+
+                    b.HasIndex("IngredientId");
+
+                    b.ToTable("DishIngredients");
+                });
+
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Ingredient", b =>
                 {
                     b.Property<int>("ID")
@@ -89,6 +163,35 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Mesas", (string)null);
+                });
+
+            modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.DishIngredients", b =>
+                {
+                    b.HasOne("ApiRestaurant.Core.Domain.Entity.Dish", "Dish")
+                        .WithMany("Ingredients")
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ApiRestaurant.Core.Domain.Entity.Ingredient", "Ingredient")
+                        .WithMany("Ingredients")
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dish");
+
+                    b.Navigation("Ingredient");
+                });
+
+            modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Dish", b =>
+                {
+                    b.Navigation("Ingredients");
+                });
+
+            modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Ingredient", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

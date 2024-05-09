@@ -10,5 +10,7 @@ namespace ApiRestaurant.Core.Domain.Entity
     public class Ingredient : AuditableBaseEntity
     {
         public string Name { get; set; }
+
+        public ICollection<DishIngredients> Ingredients { get; set; }
     }
 }

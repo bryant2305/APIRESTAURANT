@@ -1,5 +1,6 @@
 ﻿using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Application.Services;
+using ApiRestaurant.Core.Domain.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +22,8 @@ namespace ApiRestaurant.Core.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<IMesasService, MesasService>();
             services.AddTransient<IIngredientService, IngredientService>();
+            services.AddTransient<IDishService, DishService>();
+            services.AddTransient<IDishIngredientService, DishIngredientService>();
 
         }
     }

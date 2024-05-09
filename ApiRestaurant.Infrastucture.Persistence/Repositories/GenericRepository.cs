@@ -47,5 +47,15 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
             return await _dbcontext.Set<Entity>().FindAsync(Id);
         }
 
+        public virtual async Task<List<Entity>> GetAllWhitIncludes(List<string> properties)
+        {
+            var query = _dbcontext.Set<Entity>().AsQueryable();
+            foreach (var property in properties)
+            {
+                query = query.Include(property);
+            }
+            return await query.ToListAsync();
+        }
+
     }
 }

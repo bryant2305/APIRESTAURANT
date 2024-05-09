@@ -1,5 +1,6 @@
 ﻿using ApiRestaurant.Core.Domain.Common;
 using ApiRestaurant.Core.Domain.Entity;
+using ApiRestaurant.Infrastucture.Persistence.Migrations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -43,12 +44,21 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
                 .ToTable("Mesas");
 
             modelBuilder.Entity<Ingredient>().ToTable("Ingredient");
+
+
+            modelBuilder.Entity<Dish>().ToTable("Dish");
             #endregion
+
+            
 
             #region "primary keys"
             modelBuilder.Entity<Mesas>().HasKey(x => x.ID);
 
             modelBuilder.Entity<Ingredient>().HasKey(x => x.ID);
+
+            modelBuilder.Entity<Dish>().HasKey(x => x.ID);
+
+
             #endregion
 
             #region "property config"
@@ -64,6 +74,26 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
             #region Ingredient
             modelBuilder.Entity<Ingredient>().Property(medicos => medicos.Name).IsRequired();
             #endregion
+
+            #region Dish
+            modelBuilder.Entity<Dish>().Property(medicos => medicos.Name).IsRequired();
+
+            modelBuilder.Entity<Dish>().Property(medicos => medicos.Price).IsRequired();
+
+            modelBuilder.Entity<Dish>().Property(medicos => medicos.AmountPeople).IsRequired();
+
+            modelBuilder.Entity<Dish>().Property(medicos=>medicos.Category).IsRequired();
+
+            #endregion
+            #endregion
+
+            #region "Relationships"
+
+            modelBuilder.Entity<Ingredient>().HasMany<DishIngredients>(i => i.Ingredients).WithOne(it => it.Ingredient).HasForeignKey(it => it.IngredientId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Dish>().HasMany<DishIngredients>(dish => dish.Ingredients)
+                          .WithOne(ingredients => ingredients.Dish).HasForeignKey(ingredients => ingredients.DishId).OnDelete(DeleteBehavior.Cascade);
             #endregion
         }
 
