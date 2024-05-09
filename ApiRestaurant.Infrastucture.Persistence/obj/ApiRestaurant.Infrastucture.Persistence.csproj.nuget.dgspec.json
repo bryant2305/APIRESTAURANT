@@ -239,7 +239,7 @@
         "projectName": "Restaurant.Infraestructure.Shared",
         "projectPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\Restaurant.Infraestructure.Shared.csproj",
         "packagesPath": "C:\\Users\\bryan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bryan\\source\\repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\obj\\",
+        "outputPath": "C:\\Users\\bryan\\Source\\Repos\\APIRESTAURANT\\Restaurant.Infraestructure.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bryan\\AppData\\Roaming\\NuGet\\NuGet.Config",

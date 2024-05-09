@@ -9,3 +9,4 @@ C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\
 C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\refint\Restaurant.Infraestructure.Shared.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.pdb
 C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\ref\Restaurant.Infraestructure.Shared.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\Restaurant.Infraestructure.Shared\obj\Debug\net6.0\Restaurant.Infraestructure.Shared.sourcelink.json
