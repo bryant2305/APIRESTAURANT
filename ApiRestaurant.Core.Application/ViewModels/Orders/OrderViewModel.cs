@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ApiRestaurant.Core.Application.ViewModels.DishIngredients;
+using ApiRestaurant.Core.Application.ViewModels.OrderDish;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +19,7 @@ namespace ApiRestaurant.Core.Application.ViewModels.Orders
         public string Subtotal { get; set; }
 
         public string Status { get; set; }
+
+        public List<OrderDishViewModel> Orders { get; set; }
     }
 }

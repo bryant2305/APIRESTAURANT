@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApiRestaurant.Core.Application.Interfaces.Repositories
 {
-    public interface IOrderRepository : IGenericRepository<Mesas>
+    public interface IOrderRepository : IGenericRepository<Order>
     {
     }
 }

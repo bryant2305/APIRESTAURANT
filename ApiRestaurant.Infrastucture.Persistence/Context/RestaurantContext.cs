@@ -1,6 +1,5 @@
 ﻿using ApiRestaurant.Core.Domain.Common;
 using ApiRestaurant.Core.Domain.Entity;
-using ApiRestaurant.Infrastucture.Persistence.Migrations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -105,8 +104,34 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
 
             modelBuilder.Entity<Dish>().HasMany<DishIngredients>(dish => dish.Ingredients)
                           .WithOne(ingredients => ingredients.Dish).HasForeignKey(ingredients => ingredients.DishId).OnDelete(DeleteBehavior.Cascade);
-            #endregion
+
+
+            modelBuilder.Entity<Dish>().HasMany<OrderDish>(i => i.OrderDishes).WithOne(it => it.Dish).HasForeignKey(it => it.OrderID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<Dish>().HasMany<OrderDish>(i => i.OrderDishes).WithOne(it => it.Dish).HasForeignKey(it => it.OrderID)
+            // .OnDelete(DeleteBehavior.Cascade);
+
+
+
+            //modelBuilder.Entity<Order>().HasMany<OrderDish>(o => o.OrderDishes)
+            //              .WithOne(o => o.Order).HasForeignKey(oi => oi.OrderID).OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<OrderDish>()
+        .HasOne(od => od.Order)
+        .WithMany(o => o.OrderDishes)
+        .HasForeignKey(od => od.OrderID);
+
+            modelBuilder.Entity<OrderDish>()
+                .HasOne(od => od.Dish)
+                .WithMany(d => d.OrderDishes)
+                .HasForeignKey(od => od.DishID);
+
         }
 
+        #endregion
+
+
     }
+
 }

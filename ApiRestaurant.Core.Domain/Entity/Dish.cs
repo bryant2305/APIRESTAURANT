@@ -9,14 +9,11 @@ namespace ApiRestaurant.Core.Domain.Entity
 {
     public class Dish : AuditableBaseEntity
     {
-        public string Name { get; set; }    
-
+        public string Name { get; set; }
         public double Price { get; set; }
-
         public int AmountPeople { get; set; }
-
         public string Category { get; set; }
-
         public ICollection<DishIngredients> Ingredients { get; set; }
+        public ICollection<OrderDish> OrderDishes { get; set; }
     }
 }

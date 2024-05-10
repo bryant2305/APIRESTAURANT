@@ -34,6 +34,7 @@ namespace ApiRestaurant.Infrastucture.Persistence
             services.AddTransient<IDishRepository, DishRepository>();
             services.AddTransient<IDishIngredientsRepository, DishIngredientRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderDishRepository, OrderDishRepository>();
         }
     }
 }

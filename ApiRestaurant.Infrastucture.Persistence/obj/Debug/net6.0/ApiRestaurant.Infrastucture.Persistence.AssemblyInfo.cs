@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiRestaurant.Infrastucture.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a208d4b04c50ff166e6bd1083d1d585f3f337dc6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiRestaurant.Infrastucture.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiRestaurant.Infrastucture.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -25,6 +25,7 @@ namespace ApiRestaurant.Core.Application
             services.AddTransient<IDishService, DishService>();
             services.AddTransient<IDishIngredientService, DishIngredientService>();
             services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IOrderDishService, OrderDishService>();
 
         }
     }
