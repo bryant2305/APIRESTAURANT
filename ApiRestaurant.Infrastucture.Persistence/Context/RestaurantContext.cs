@@ -58,6 +58,8 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
 
             modelBuilder.Entity<Dish>().HasKey(x => x.ID);
 
+            modelBuilder.Entity<Order>().HasKey(x => x.ID);
+
 
             #endregion
 
@@ -83,6 +85,15 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
             modelBuilder.Entity<Dish>().Property(medicos => medicos.AmountPeople).IsRequired();
 
             modelBuilder.Entity<Dish>().Property(medicos=>medicos.Category).IsRequired();
+
+            #endregion
+
+            #region
+            modelBuilder.Entity<Order>().Property(medicos => medicos.Status).IsRequired();
+
+            modelBuilder.Entity<Order>().Property(medicos => medicos.Subtotal).IsRequired();
+
+            modelBuilder.Entity<Order>().Property(medicos => medicos.DishSelected).IsRequired();
 
             #endregion
             #endregion
