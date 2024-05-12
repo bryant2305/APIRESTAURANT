@@ -265,3 +265,11 @@ C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\runtime
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\APIRESTAURANT.sourcelink.json
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
