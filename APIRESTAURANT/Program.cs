@@ -38,6 +38,12 @@ builder.Services.AddScoped<IDishService, DishService>();
 builder.Services.AddScoped<IDishIngredientsRepository, DishIngredientRepository>();
 builder.Services.AddScoped<IGenericRepository<DishIngredients>, DishIngredientRepository>();
 builder.Services.AddScoped<IDishIngredientService, DishIngredientService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IGenericRepository<Order>, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderDishService, OrderDishService>();
+builder.Services.AddScoped<IGenericRepository<OrderDish>, OrderDishRepository>();
+builder.Services.AddScoped<IOrderDishService, OrderDishService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

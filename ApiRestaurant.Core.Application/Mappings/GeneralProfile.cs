@@ -1,6 +1,8 @@
 ﻿using ApiRestaurant.Core.Application.ViewModels.Dish;
 using ApiRestaurant.Core.Application.ViewModels.DishIngredients;
 using ApiRestaurant.Core.Application.ViewModels.Ingredients;
+using ApiRestaurant.Core.Application.ViewModels.OrderDish;
+using ApiRestaurant.Core.Application.ViewModels.Orders;
 using ApiRestaurant.Core.Application.ViewModels.Tables;
 using ApiRestaurant.Core.Domain.Entity;
 using AutoMapper;
@@ -75,7 +77,34 @@ namespace ApiRestaurant.Core.Application.Mappings
                     .ForMember(x => x.CreatedBy, opt => opt.Ignore())
                     .ForMember(x => x.LastModify, opt => opt.Ignore())
                     .ForMember(x => x.LastModifyBy, opt => opt.Ignore());
-                    
+
+            CreateMap<Order, OrderViewModel>()
+                 .ReverseMap()
+                     .ForMember(x => x.Created, opt => opt.Ignore())
+                     .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                     .ForMember(x => x.LastModifyBy, opt => opt.Ignore())
+                     .ForMember(x => x.LastModify, opt => opt.Ignore());
+
+            CreateMap<Order, SaveOrderViewModel>()
+                .ReverseMap()
+                    .ForMember(x => x.Created, opt => opt.Ignore())
+                    .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                    .ForMember(x => x.LastModify, opt => opt.Ignore())
+                    .ForMember(x => x.LastModifyBy, opt => opt.Ignore());
+
+            CreateMap<OrderDish, OrderDishViewModel>()
+                .ReverseMap()
+                    .ForMember(x => x.Created, opt => opt.Ignore())
+                    .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                    .ForMember(x => x.LastModifyBy, opt => opt.Ignore())
+                    .ForMember(x => x.LastModify, opt => opt.Ignore());
+
+            CreateMap<OrderDish, SaveOrderDishViewModel>()
+                .ReverseMap()
+                    .ForMember(x => x.Created, opt => opt.Ignore())
+                    .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                    .ForMember(x => x.LastModify, opt => opt.Ignore())
+                    .ForMember(x => x.LastModifyBy, opt => opt.Ignore());
 
         }
     }
