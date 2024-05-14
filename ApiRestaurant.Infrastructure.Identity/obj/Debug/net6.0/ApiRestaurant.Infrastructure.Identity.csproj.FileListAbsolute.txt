@@ -16,3 +16,5 @@ C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.pdb
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ref\ApiRestaurant.Infrastructure.Identity.dll
 C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.sourcelink.json
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\bin\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.runtimeconfig.json
+C:\Users\bryan\source\repos\APIRESTAURANT\ApiRestaurant.Infrastructure.Identity\obj\Debug\net6.0\ApiRestaurant.Infrastructure.Identity.genruntimeconfig.cache
