@@ -13,24 +13,25 @@ namespace ApiRestaurant.Infrastructure.Identity.Seeds
     {
         public static async Task SeedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            ApplicationUser mesero = new();
+            ApplicationUser superAdmin = new();
 
-            mesero.UserName = "SuperAdmin";
-            mesero.Email = "SuperAdmin@mail.com";
-            mesero.FirstName = "ELpapa";
-            mesero.LastName = "UPA";
-            mesero.EmailConfirmed = true;
-            mesero.PhoneNumberConfirmed = true;
-            mesero.TwoFactorEnabled = false;
+            superAdmin.UserName = "SuperAdmin";
+            superAdmin.Email = "SuperAdmin@mail.com";
+            superAdmin.FirstName = "ELpapa";
+            superAdmin.LastName = "UPA";
+            superAdmin.EmailConfirmed = true;
+            superAdmin.PhoneNumberConfirmed = true;
+            superAdmin.TwoFactorEnabled = false;
 
-            if (userManager.Users.All(u => u.Id != mesero.Id))
+            if (userManager.Users.All(u => u.Id != superAdmin.Id))
             {
-                var topMesero = await userManager.FindByEmailAsync(mesero.Email);
+                var topMesero = await userManager.FindByEmailAsync(superAdmin.Email);
                 if (topMesero == null)
                 {
-                    await userManager.CreateAsync(mesero, "123Pass456P/word");
-                    await userManager.AddToRoleAsync(mesero, Roles.Admin.ToString());
-                    await userManager.AddToRoleAsync(mesero, Roles.Waiter.ToString());
+                    await userManager.CreateAsync(superAdmin, "123Pa$$word");
+                    await userManager.AddToRoleAsync(superAdmin, Roles.SuperAdmin.ToString());
+                    await userManager.AddToRoleAsync(superAdmin, Roles.Admin.ToString());
+                    await userManager.AddToRoleAsync(superAdmin, Roles.Waiter.ToString());
                 }
             }
         }

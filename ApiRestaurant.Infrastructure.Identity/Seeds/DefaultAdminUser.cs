@@ -28,7 +28,7 @@ namespace ApiRestaurant.Infrastructure.Identity.Seeds
                 var topMesero = await userManager.FindByEmailAsync(admin.Email);
                 if (topMesero == null)
                 {
-                    await userManager.CreateAsync(admin, "123Pass456P/word");
+                    await userManager.CreateAsync(admin, "123Pa$$word");
                     await userManager.AddToRoleAsync(admin, Roles.Admin.ToString());
                 }
             }
