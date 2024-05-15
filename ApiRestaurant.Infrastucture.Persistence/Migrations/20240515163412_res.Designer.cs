@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 {
     [DbContext(typeof(RestaurantContext))]
-    [Migration("20240510160722_res")]
+    [Migration("20240515163412_res")]
     partial class res
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

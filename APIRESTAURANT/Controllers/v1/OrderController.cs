@@ -2,12 +2,14 @@
 using ApiRestaurant.Core.Application.Services;
 using ApiRestaurant.Core.Application.ViewModels.Dish;
 using ApiRestaurant.Core.Application.ViewModels.Orders;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIRESTAURANT.Controllers.v1
 {
 
     [ApiVersion("1.0")]
+    [Authorize(Roles = "SuperAdmin,Waither")]
     [ApiController]
     public class OrderController : BaseApiController
     {

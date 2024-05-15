@@ -17,7 +17,7 @@ using System.Text;
 
 public static class ServiceRegistration
 {
-    public static void AddPersistenceInfraestructure(this IServiceCollection services, IConfiguration config)
+    public static void AddIdentityInfraestructure(this IServiceCollection services, IConfiguration config)
     {
         #region Identity
         services.Configure<JWTSettings>(config.GetSection("JWTSettings"));
@@ -65,14 +65,14 @@ public static class ServiceRegistration
                     c.HandleResponse();
                     c.Response.StatusCode = 401;
                     c.Response.ContentType = "application/json";
-                    var result = JsonConvert.SerializeObject(new jwtResponse() { HasError = true, Error = "No estas autorizado" });
+                    var result = JsonConvert.SerializeObject(new JwtResponse() { HasError = true, Error = "No estas autorizado" });
                     return c.Response.WriteAsync(result);
                 },
                 OnForbidden = c =>
                 {
                     c.Response.StatusCode = 403;
                     c.Response.ContentType = "application/json";
-                    var result = JsonConvert.SerializeObject(new jwtResponse() { HasError = true, Error = "No estas autorizado para acceder a esta area" });
+                    var result = JsonConvert.SerializeObject(new JwtResponse() { HasError = true, Error = "No estas autorizado para acceder a esta area" });
                     return c.Response.WriteAsync(result);
                 }
             };

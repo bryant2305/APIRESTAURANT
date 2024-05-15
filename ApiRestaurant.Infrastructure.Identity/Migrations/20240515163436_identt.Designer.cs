@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRestaurant.Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20240514175941_identity")]
-    partial class identity
+    [Migration("20240515163436_identt")]
+    partial class identt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

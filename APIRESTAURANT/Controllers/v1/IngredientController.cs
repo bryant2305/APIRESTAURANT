@@ -2,12 +2,14 @@
 using ApiRestaurant.Core.Application.Services;
 using ApiRestaurant.Core.Application.ViewModels.Ingredients;
 using ApiRestaurant.Core.Application.ViewModels.Tables;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIRESTAURANT.Controllers.v1
 {
     [ApiVersion("1.0")]
     [ApiController]
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class IngredientController : BaseApiController
     {
         private readonly IIngredientService _ingredientService;

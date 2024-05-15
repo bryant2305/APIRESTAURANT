@@ -21,3 +21,4 @@ namespace ApiRestaurant.Infrastructure.Identity.Seeds
         }
     }
 }
+ 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ApiRestaurant.Infrastructure.Identity.Migrations
 {
-    public partial class identity : Migration
+    public partial class identt : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
