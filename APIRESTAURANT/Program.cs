@@ -1,3 +1,4 @@
+using ApiRestaurant.Core.Application;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Application.Mappings;
@@ -8,10 +9,14 @@ using ApiRestaurant.Infrastructure.Identity.Context;
 using ApiRestaurant.Infrastructure.Identity.Entities;
 using ApiRestaurant.Infrastructure.Identity.Seeds;
 using ApiRestaurant.Infrastructure.Identity.Services;
+using ApiRestaurant.Infrastucture.Persistence;
 using ApiRestaurant.Infrastucture.Persistence.Context;
 using ApiRestaurant.Infrastucture.Persistence.Repositories;
+using APIRESTAURANT.Extensions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,12 +24,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddApiVersioningExtension();
+builder.Services.AddSwaggerExtension();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new ProducesAttribute("application/json"));
+}).ConfigureApiBehaviorOptions(options =>
+{
+    options.SuppressInferBindingSourcesForParameters = true;
+    options.SuppressMapClientErrors = false;
+});
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-builder.Services.AddDbContext<RestaurantContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+//builder.Services.AddDbContext<RestaurantContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+//});
 
 builder.Services.AddDbContext<IdentityContext>(options =>
 {
@@ -36,6 +52,7 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
 });
 
+
 // Register the JWT settings from the configuration
 builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JWTSettings"));
 
@@ -45,26 +62,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddAutoMapper(typeof(GeneralProfile));
 
-// Register repositories and services
-builder.Services.AddAutoMapper(typeof(GeneralProfile));
-builder.Services.AddScoped<IMesasRepository, MesasRepository>();
-builder.Services.AddScoped<IGenericRepository<Mesas>, MesasRepository>(); // Registro de IGenericRepository<Mesas>
-builder.Services.AddScoped<IMesasService, MesasService>();
-builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
-builder.Services.AddScoped<IGenericRepository<Ingredient>, IngredientRepository>();
-builder.Services.AddScoped<IIngredientService, IngredientService>();
-builder.Services.AddScoped<IDishRepository, DishRepository>();
-builder.Services.AddScoped<IGenericRepository<Dish>, DishRepository>();
-builder.Services.AddScoped<IDishService, DishService>();
-builder.Services.AddScoped<IDishIngredientsRepository, DishIngredientRepository>();
-builder.Services.AddScoped<IGenericRepository<DishIngredients>, DishIngredientRepository>();
-builder.Services.AddScoped<IDishIngredientService, DishIngredientService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IGenericRepository<Order>, OrderRepository>();
-builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IOrderDishService, OrderDishService>();
-builder.Services.AddScoped<IGenericRepository<OrderDish>, OrderDishRepository>();
-builder.Services.AddScoped<IOrderDishService, OrderDishService>();
+
+//builder.Services.AddIdentityInfraestructure(builder.Configuration);
+builder.Services.AddRestauranteLayer(builder.Configuration);
+builder.Services.AddPersistenceInfraestructure(builder.Configuration);
+
 builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
@@ -76,11 +78,14 @@ await DefaultSuperAdminUser.SeedAsync(userManager, roleManager);
 await DefaultAdminUser.SeedAsync(userManager, roleManager);
 await DefaultWaiterUser.SeedAsync(userManager, roleManager);
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "RESTAURANT API");
+        options.DefaultModelRendering(ModelRendering.Model);
+    });
 }
 
 app.UseHttpsRedirection();

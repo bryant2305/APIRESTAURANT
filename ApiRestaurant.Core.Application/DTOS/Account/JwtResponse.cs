@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApiRestaurant.Core.Application.DTOS.Account
 {
-    public class jwtResponse
+    public class JwtResponse
     {
         public bool HasError { get; set; }
         public string Error { get; set; }

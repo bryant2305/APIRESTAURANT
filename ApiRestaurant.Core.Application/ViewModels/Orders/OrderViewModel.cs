@@ -12,8 +12,8 @@ namespace ApiRestaurant.Core.Application.ViewModels.Orders
     public class OrderViewModel
     {
 
-        [JsonIgnore]
-        public int ID { get; set; }
+        //[JsonIgnore]
+        //public int ID { get; set; }
         public string DishSelected { get; set; }
 
         public string Subtotal { get; set; }

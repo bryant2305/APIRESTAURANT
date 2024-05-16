@@ -1,6 +1,7 @@
 ﻿using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Application.Services;
 using ApiRestaurant.Core.Application.ViewModels.Dish;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace APIRESTAURANT.Controllers.v1
 {
-    [ApiVersion("1.0")]
+     [ApiVersion("1.0")]
     [ApiController]
     public class DishController : BaseApiController
     {
@@ -44,6 +45,7 @@ namespace APIRESTAURANT.Controllers.v1
         }
 
         [HttpGet("GET")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

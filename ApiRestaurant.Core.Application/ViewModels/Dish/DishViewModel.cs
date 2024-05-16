@@ -11,8 +11,8 @@ namespace ApiRestaurant.Core.Application.ViewModels.Dish
 {
     public class DishViewModel
     {
-        [JsonIgnore]
-        public int ID { get; set; }
+        //[JsonIgnore]
+        //public int ID { get; set; }
 
         [Required(ErrorMessage = "You should add a name")]
         public string Name { get; set; }

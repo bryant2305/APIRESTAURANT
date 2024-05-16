@@ -1,8 +1,10 @@
 ﻿using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Application.ViewModels.Tables;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace APIRESTAURANT.Controllers.v1
@@ -19,6 +21,8 @@ namespace APIRESTAURANT.Controllers.v1
         }
 
         [HttpPost("Create")]
+        [Authorize(Roles = "Admin,SuperAdmin")]
+        [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -40,6 +44,7 @@ namespace APIRESTAURANT.Controllers.v1
             }
         }
 
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPut("Update")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -70,6 +75,7 @@ namespace APIRESTAURANT.Controllers.v1
         }
 
         [HttpGet("GET")]
+        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -91,6 +97,8 @@ namespace APIRESTAURANT.Controllers.v1
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
+        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
         [HttpGet("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -114,6 +122,7 @@ namespace APIRESTAURANT.Controllers.v1
             }
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpDelete("Delete")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -124,7 +133,7 @@ namespace APIRESTAURANT.Controllers.v1
             {
                 var mesa = await _mesasService.GetById(ID);
 
-                if (mesa == null ||mesa.ID == 0)
+                if (mesa == null )
                 {
                     return NotFound();
                 }
@@ -136,5 +145,6 @@ namespace APIRESTAURANT.Controllers.v1
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
     }
 }
