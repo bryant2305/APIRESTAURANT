@@ -9,8 +9,8 @@ namespace ApiRestaurant.Core.Application.ViewModels.DishIngredients
 {
     public class DishIngredientViewModel
     {
-        [JsonIgnore]
-        public int ID { get; set; }
+        //[JsonIgnore]
+        //public int ID { get; set; }
 
         public int IngredientID { get; set; }
 

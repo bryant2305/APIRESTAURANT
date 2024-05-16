@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -9,7 +10,8 @@ namespace ApiRestaurant.Core.Application.ViewModels.Ingredients
 {
     public class IngredientViewModel
     {
-        [JsonIgnore]
+
+        [EventIgnore]
         public int ID { get; set; }
 
         public string Name { get; set; }

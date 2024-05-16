@@ -11,8 +11,8 @@ namespace ApiRestaurant.Core.Application.ViewModels.Tables
 {
     public class MesasViewModel
     {
-        [JsonIgnore]
-        public int ID { get; set; }
+        //[JsonIgnore]
+        //public int ID { get; set; }
         public string Nombre { get; set; }
         public int CantidadPersonas { get; set; }
 

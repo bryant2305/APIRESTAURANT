@@ -9,7 +9,6 @@ namespace APIRESTAURANT.Controllers.v1
 {
     [ApiVersion("1.0")]
     [ApiController]
-    [Authorize(Roles = "Admin,SuperAdmin")]
     public class IngredientController : BaseApiController
     {
         private readonly IIngredientService _ingredientService;
@@ -22,6 +21,7 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         public async Task<IActionResult> Create(IngredientViewModel vm)
         {
             try
@@ -43,7 +43,7 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(int ID , IngredientViewModel vm)
+        public async Task<IActionResult> Update(int ID , SaveIngredientViewModel vm)
         {
             try
             {
@@ -57,6 +57,7 @@ namespace APIRESTAURANT.Controllers.v1
                 {
                     return NotFound();
                 }
+                ingredient.ID = ID;
                 ingredient.Name = vm.Name;
 
                 await _ingredientService.Update(ingredient ,ID);

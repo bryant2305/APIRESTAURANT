@@ -19,18 +19,19 @@ public static class ServiceRegistration
 {
     public static void AddIdentityInfraestructure(this IServiceCollection services, IConfiguration config)
     {
-        #region Identity
-        services.Configure<JWTSettings>(config.GetSection("JWTSettings"));
+
+        services.AddDbContext<IdentityContext>(options =>
+        {
+            options.EnableSensitiveDataLogging();
+            options.UseSqlServer(config.GetConnectionString("IdentityConnection"),
+                m => m.MigrationsAssembly(typeof(IdentityContext).Assembly.FullName));
+        });
+
         services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityContext>()
-                .AddDefaultTokenProviders();
+              .AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
 
-        //services.ConfigureApplicationCookie(options =>
-        //{
-        //    options.LoginPath = "/User";
-        //    options.AccessDeniedPath = "/User/AccessDenied";
-        //});
-
+       
+        services.Configure<JWTSettings>(config.GetSection("JWTSettings"));
 
         services.AddAuthentication(opt =>
         {
@@ -77,31 +78,13 @@ public static class ServiceRegistration
                 }
             };
         });
-        #endregion
+     
 
-        #region Database
-        if (config.GetValue<bool>("UseInMemoryDatabase"))
-        {
-            services.AddDbContext<IdentityContext>(options =>
-                   options.UseInMemoryDatabase("IdentityDb"));
-        }
-        else
-        {
-            services.AddDbContext<IdentityContext>(options =>
-            {
-                options.EnableSensitiveDataLogging();
-                options.UseSqlServer(
-                    config.GetConnectionString("IdentityConnection"),
-                    m => m.MigrationsAssembly(typeof(IdentityContext).Assembly.FullName)
-                );
-            });
-        }
-        #endregion
+      
 
-        #region Services
+
         services.AddTransient<IAccountService, AccountService>();
         //services.AddTransient<IRoleService, RoleService>();
-        #endregion
     }
 }
 

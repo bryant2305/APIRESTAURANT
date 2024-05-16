@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 namespace APIRESTAURANT.Controllers.v1
 {
      [ApiVersion("1.0")]
-    [Authorize(Roles = "Admin,SuperAdmin")]
     [ApiController]
     public class DishController : BaseApiController
     {
@@ -46,6 +45,7 @@ namespace APIRESTAURANT.Controllers.v1
         }
 
         [HttpGet("GET")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

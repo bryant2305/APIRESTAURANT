@@ -133,7 +133,7 @@ namespace APIRESTAURANT.Controllers.v1
             {
                 var mesa = await _mesasService.GetById(ID);
 
-                if (mesa == null ||mesa.ID == 0)
+                if (mesa == null )
                 {
                     return NotFound();
                 }
