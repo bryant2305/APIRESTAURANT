@@ -1,6 +1,4 @@
-﻿using ApiRestaurant.Core.Application.ViewModels.Dish;
-using ApiRestaurant.Core.Application.ViewModels.Ingredients;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +12,8 @@ namespace ApiRestaurant.Core.Application.ViewModels.DishIngredients
 
         public int DishID { get; set; }
 
-        public SaveIngredientViewModel Ingredient { get; set; }
+        //public SaveIngredientViewModel Ingredient { get; set; }
 
-        public SaveDishViewModel Dish { get; set; }
+        //public SaveDishViewModel Dish { get; set; }
     }
 }

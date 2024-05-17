@@ -2,7 +2,6 @@ using ApiRestaurant.Core.Application;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Application.Mappings;
-using ApiRestaurant.Core.Application.Services;
 using ApiRestaurant.Core.Domain.Entity;
 using ApiRestaurant.Core.Domain.Settings;
 using ApiRestaurant.Infrastructure.Identity.Context;

@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiRestaurant.Core.Application.ViewModels.Dish
+namespace ApiRestaurant.Core.Application.DTOS.Dish
 {
-    public class SaveDishViewModel
+    public class DishCreateDto
     {
-        public int ID { get; set; }
 
         [Required(ErrorMessage = "You should add a name")]
         public string Name { get; set; }
@@ -23,7 +22,6 @@ namespace ApiRestaurant.Core.Application.ViewModels.Dish
 
         [Required(ErrorMessage = "You should add a Category")]
         public string Category { get; set; }
-
-        public List<DishIngredientViewModel> Ingredients { get; set; }
+        public List<DishIngredientViewModel> ingredients { get; set; }
     }
 }

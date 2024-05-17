@@ -70,10 +70,9 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                 name: "DishIngredients",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     DishId = table.Column<int>(type: "int", nullable: false),
                     IngredientId = table.Column<int>(type: "int", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -81,7 +80,7 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DishIngredients", x => x.ID);
+                    table.PrimaryKey("PK_DishIngredients", x => new { x.DishId, x.IngredientId });
                     table.ForeignKey(
                         name: "FK_DishIngredients_Dish_DishId",
                         column: x => x.DishId,
@@ -105,7 +104,7 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     DishSelected = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Subtotal = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MesasID = table.Column<int>(type: "int", nullable: false),
+                    MesasID = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -118,18 +117,16 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                         name: "FK_Order_Mesas_MesasID",
                         column: x => x.MesasID,
                         principalTable: "Mesas",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrderDish",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     OrderID = table.Column<int>(type: "int", nullable: false),
                     DishID = table.Column<int>(type: "int", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -137,10 +134,10 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDish", x => x.ID);
+                    table.PrimaryKey("PK_OrderDish", x => new { x.OrderID, x.DishID });
                     table.ForeignKey(
-                        name: "FK_OrderDish_Dish_DishID",
-                        column: x => x.DishID,
+                        name: "FK_OrderDish_Dish_OrderID",
+                        column: x => x.OrderID,
                         principalTable: "Dish",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -153,11 +150,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DishIngredients_DishId",
-                table: "DishIngredients",
-                column: "DishId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_DishIngredients_IngredientId",
                 table: "DishIngredients",
                 column: "IngredientId");
@@ -166,16 +158,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                 name: "IX_Order_MesasID",
                 table: "Order",
                 column: "MesasID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDish_DishID",
-                table: "OrderDish",
-                column: "DishID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDish_OrderID",
-                table: "OrderDish",
-                column: "OrderID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

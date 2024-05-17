@@ -1,6 +1,8 @@
-﻿using ApiRestaurant.Core.Application.Interfaces.Services;
-using ApiRestaurant.Core.Application.Services;
-using ApiRestaurant.Core.Application.ViewModels.Dish;
+﻿using ApiRestaurant.Core.Application.DTOS.Dish;
+using ApiRestaurant.Core.Application.Interfaces.Repositories;
+using ApiRestaurant.Core.Application.Interfaces.Services;
+using ApiRestaurant.Core.Domain.Entity;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,18 +16,20 @@ namespace APIRESTAURANT.Controllers.v1
     [ApiController]
     public class DishController : BaseApiController
     {
-        private readonly IDishService _idishService;
+        private readonly IDishRepository _dishRepository;
+        private readonly IMapper _mapper;
 
-        public DishController(IDishService idishService)
+        public DishController(IDishRepository dishRepository , IMapper mapper)
         {
-            _idishService = idishService;
+            _dishRepository = dishRepository;
+            _mapper = mapper;
         }
 
         [HttpPost("Create")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create(DishViewModel vm)
+        public async Task<IActionResult> Create( [FromBody] DishCreateDto dto)
         {
             try
             {
@@ -33,10 +37,17 @@ namespace APIRESTAURANT.Controllers.v1
                 {
                     return BadRequest();
                 }
+                if (dto == null)
+                {
 
-                await _idishService.Add(vm);
+                    return NotFound();
+                }
 
-                return NoContent();
+                Dish model = _mapper.Map<Dish>(dto);
+
+                await _dishRepository.AddAsync(model);
+
+                return Ok(model);
             }
             catch (Exception ex)
             {
@@ -53,13 +64,16 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-                var mesasList = await _idishService.GetAllViewModelWhitInclude();
+                var dishesList = await _dishRepository.GetAllDishesWithIngredientsAsync();
 
-                if (mesasList == null || mesasList.Count == 0)
+                if (dishesList == null || dishesList.Count == 0)
                 {
                     return NotFound();
                 }
-                return Ok(mesasList);
+
+                var dishesDtoList = _mapper.Map<List<DishDto>>(dishesList);
+
+                return Ok(dishesDtoList);
             }
             catch (Exception ex)
             {
@@ -67,7 +81,7 @@ namespace APIRESTAURANT.Controllers.v1
             }
         }
 
-        [HttpGet("GetById/{ID}")]
+        [HttpGet("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -75,7 +89,7 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-               DishViewModel mesasList = await _idishService.GetById(ID);
+               Dish mesasList = await _dishRepository.GetByIdAsync(ID);
 
                 if (mesasList == null)
                 {

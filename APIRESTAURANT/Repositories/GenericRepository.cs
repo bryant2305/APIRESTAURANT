@@ -31,7 +31,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
             _dbcontext.Entry(etry).CurrentValues.SetValues(entity);
             await _dbcontext.SaveChangesAsync();
         }
-
         public virtual async Task DeleteAsync(Entity entity)
         {
             _dbcontext.Set<Entity>().Remove(entity);
@@ -57,5 +56,9 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
             return await query.ToListAsync();
         }
 
+        public async Task SaveChangesAsync()
+        {
+            await _dbcontext.SaveChangesAsync();
+        }
     }
 }

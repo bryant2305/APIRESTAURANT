@@ -55,7 +55,6 @@ C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\APIREST
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\APIRESTAURANT.AssemblyInfoInputs.cache
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\APIRESTAURANT.AssemblyInfo.cs
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\APIRESTAURANT.csproj.CoreCompileInputs.cache
-C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\APIRESTAURANT.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\APIRESTAURANT.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\bryan\source\repos\APIRESTAURANT\APIRESTAURANT\obj\Debug\net6.0\staticwebassets.development.json

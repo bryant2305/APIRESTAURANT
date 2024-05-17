@@ -1,7 +1,5 @@
-﻿using ApiRestaurant.Core.Application.ViewModels.Dish;
-using ApiRestaurant.Core.Application.ViewModels.Ingredients;
+﻿
 using ApiRestaurant.Core.Application.ViewModels.Orders;
-using ApiRestaurant.Core.Application.ViewModels.Tables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +16,7 @@ namespace ApiRestaurant.Core.Application.ViewModels.OrderDish
 
         public SaveOrderViewModel Orders { get; set; }
 
-        public SaveMesasViewModel Dishs { get; set; }
+        //public SaveMesasViewModel Dishs { get; set; }
 
     }
 }

@@ -1,7 +1,9 @@
-﻿using ApiRestaurant.Core.Application.Interfaces.Services;
-using ApiRestaurant.Core.Application.Services;
-using ApiRestaurant.Core.Application.ViewModels.Ingredients;
-using ApiRestaurant.Core.Application.ViewModels.Tables;
+﻿using ApiRestaurant.Core.Application.DTOS;
+using ApiRestaurant.Core.Application.DTOS.Ingredients;
+using ApiRestaurant.Core.Application.Interfaces.Repositories;
+using ApiRestaurant.Core.Application.Interfaces.Services;
+using ApiRestaurant.Core.Domain.Entity;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +13,12 @@ namespace APIRESTAURANT.Controllers.v1
     [ApiController]
     public class IngredientController : BaseApiController
     {
-        private readonly IIngredientService _ingredientService;
-        public  IngredientController (IIngredientService ingredientService)
+        private readonly IIngredientRepository _ingredientRepository;
+        private readonly IMapper _mapper;
+        public  IngredientController (IIngredientRepository ingredientRepository , IMapper mapper)
         {
-            _ingredientService = ingredientService; 
+            _ingredientRepository = ingredientRepository;
+            _mapper = mapper;
         }
 
         [HttpPost("Create")]
@@ -22,7 +26,7 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> Create(IngredientViewModel vm)
+        public async Task<IActionResult> Create([FromBody]IngredientCreateDto vm)
         {
             try
             {
@@ -31,8 +35,16 @@ namespace APIRESTAURANT.Controllers.v1
                     return BadRequest();
                 }
 
-                await _ingredientService.Add(vm);
-                return NoContent();
+                if (vm == null)
+                {
+                    return NotFound();
+                }
+                Ingredient model = _mapper.Map<Ingredient>(vm);
+
+                await _ingredientRepository.AddAsync(model);
+
+                
+                return Ok(model);
             }
             catch (Exception ex)
             {
@@ -43,7 +55,7 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(int ID , SaveIngredientViewModel vm)
+        public async Task<IActionResult> Update(int ID , [FromBody] IngredientUpdateDto dto)
         {
             try
             {
@@ -51,17 +63,20 @@ namespace APIRESTAURANT.Controllers.v1
                 {
                     return BadRequest();
                 }
-                var ingredient = await _ingredientService.GetById(ID);
 
-                if (ingredient == null)
+                var existingIngredient = await _ingredientRepository.GetByIdAsync(ID);
+                if (existingIngredient == null || ID == 0)
                 {
                     return NotFound();
                 }
-                ingredient.ID = ID;
-                ingredient.Name = vm.Name;
 
-                await _ingredientService.Update(ingredient ,ID);
-                return Ok(vm);
+                // Actualiza las propiedades de la entidad existente con los valores del DTO
+                _mapper.Map(dto, existingIngredient);
+
+
+                await _ingredientRepository.UpdateAsync(existingIngredient , ID);
+                await _ingredientRepository.SaveChangesAsync();
+                return Ok(existingIngredient);
             }
             catch (Exception ex)
             {
@@ -72,11 +87,11 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult> Get()
         {
             try
             {
-                var mesasList = await _ingredientService.GetAllAsync();
+                var mesasList = await _ingredientRepository.GetAllAsync();
 
                 if (mesasList == null || mesasList.Count == 0)
                 {
@@ -90,6 +105,7 @@ namespace APIRESTAURANT.Controllers.v1
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
         [HttpGet("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -98,7 +114,7 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-                var mesa = await _ingredientService.GetById(ID);
+                var mesa = await _ingredientRepository.GetByIdAsync(ID);
 
                 if (mesa == null)
                 {

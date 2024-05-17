@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiRestaurant.Core.Application.ViewModels.Ingredients
+namespace ApiRestaurant.Core.Application.DTOS.Ingredients
 {
-    public class SaveIngredientViewModel
+    public class IngredientCreateDto
     {
         public string Name { get; set; }
     }
