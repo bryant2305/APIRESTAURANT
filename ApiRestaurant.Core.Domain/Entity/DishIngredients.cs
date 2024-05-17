@@ -16,5 +16,7 @@ namespace ApiRestaurant.Core.Domain.Entity
         public Dish Dish { get; set; }
 
         public Ingredient Ingredient { get; set; }
+
+
     }
 }

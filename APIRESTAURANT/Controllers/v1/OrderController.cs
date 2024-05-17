@@ -1,7 +1,10 @@
-﻿using ApiRestaurant.Core.Application.Interfaces.Services;
-using ApiRestaurant.Core.Application.Services;
-using ApiRestaurant.Core.Application.ViewModels.Dish;
+﻿using ApiRestaurant.Core.Application.DTOS.Orders;
+using ApiRestaurant.Core.Application.Interfaces.Repositories;
+using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Application.ViewModels.Orders;
+using ApiRestaurant.Core.Domain.Entity;
+using ApiRestaurant.Infrastucture.Persistence.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,17 +17,19 @@ namespace APIRESTAURANT.Controllers.v1
     public class OrderController : BaseApiController
     {
 
-        private readonly IOrderService _orderService;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IMapper _mapper;
 
-        public OrderController(IOrderService orderService)
+        public OrderController(IOrderRepository orderRepository , IMapper mapper)
         {
-            _orderService = orderService;
+            _orderRepository = orderRepository;
+            _mapper = mapper;
         }
         [HttpPost("Create")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create(OrderViewModel vm)
+        public async Task<IActionResult> Create([FromBody]OrderCreateDto dto)
         {
             try
             {
@@ -33,9 +38,16 @@ namespace APIRESTAURANT.Controllers.v1
                     return BadRequest();
                 }
 
-                await _orderService.Add(vm);
+                if (dto == null)
+                {
+                    return NotFound();
+                }
 
-                return NoContent();
+                Order model = _mapper.Map<Order>(dto);
+
+                await _orderRepository.AddAsync(model);
+
+                return Ok(model);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,9 @@
-﻿using ApiRestaurant.Core.Application.Interfaces.Services;
-using ApiRestaurant.Core.Application.ViewModels.Tables;
+﻿using ApiRestaurant.Core.Application.DTOS.Tables;
+using ApiRestaurant.Core.Application.Interfaces.Repositories;
+using ApiRestaurant.Core.Application.Interfaces.Services;
+using ApiRestaurant.Core.Domain.Entity;
+using ApiRestaurant.Infrastucture.Persistence.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +17,13 @@ namespace APIRESTAURANT.Controllers.v1
     [ApiController]
     public class MesasController : BaseApiController
     {
-        private readonly IMesasService _mesasService;
+        private readonly IMesasRepository _mesasRepository;
+        private readonly IMapper _mapper;
 
-        public MesasController(IMesasService mesasService)
+        public MesasController(IMesasRepository mesasRepository , IMapper mapper)
         {
-            _mesasService = mesasService;
+            _mesasRepository = mesasRepository;
+            _mapper = mapper;
         }
 
         [HttpPost("Create")]
@@ -26,7 +32,7 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create(MesasViewModel vm)
+        public async Task<IActionResult> Create([FromBody ]TablesCreateDto dto)
         {
             try
             {
@@ -35,8 +41,15 @@ namespace APIRESTAURANT.Controllers.v1
                     return BadRequest();
                 }
 
-                await _mesasService.Add(vm);
-                return NoContent();
+                if (dto == null)
+                {
+                    return NotFound();
+                }
+
+                Mesas model = _mapper.Map<Mesas>(dto);
+
+                await _mesasRepository.AddAsync(model);
+                return Ok(model);
             }
             catch (Exception ex)
             {
@@ -49,7 +62,7 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(int ID ,MesasViewModel vm)
+        public async Task<IActionResult> Update(int ID ,[FromBody] TablesUpdateDto dto)
         {
             try
             {
@@ -57,16 +70,19 @@ namespace APIRESTAURANT.Controllers.v1
                 {
                     return BadRequest();
                 }
-
-                var Table = await _mesasService.GetById(ID);
-
-                if (Table == null)
+                var existingTable = await _mesasRepository.GetByIdAsync(ID);
+                if (existingTable == null || ID == 0)
                 {
                     return NotFound();
                 }
 
-                await _mesasService.Update(Table, ID);
-                return Ok(vm);
+                // Actualiza las propiedades de la entidad existente con los valores del DTO
+                _mapper.Map(dto, existingTable);
+
+
+                await _mesasRepository.UpdateAsync(existingTable, ID);
+                await _mesasRepository.SaveChangesAsync();
+                return Ok(existingTable);
             }
             catch (Exception ex)
             {
@@ -83,7 +99,7 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-                var mesasList = await _mesasService.GetAllAsync();
+                var mesasList = await _mesasRepository.GetAllAsync();
 
                 if (mesasList == null || mesasList.Count == 0)
                 {
@@ -107,7 +123,7 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-                var mesa = await _mesasService.GetById(ID);
+                var mesa = await _mesasRepository.GetByIdAsync(ID);
 
                 if (mesa == null)
                 {
@@ -131,13 +147,14 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-                var mesa = await _mesasService.GetById(ID);
+                var mesa = await _mesasRepository.GetByIdAsync(ID);
 
                 if (mesa == null )
                 {
                     return NotFound();
                 }
-                await _mesasService.Delete(ID);
+                await _mesasRepository.DeleteAsync(mesa);
+
                 return Ok(mesa);
             }
             catch (Exception ex)

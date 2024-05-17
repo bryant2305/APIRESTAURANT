@@ -1,6 +1,7 @@
 ﻿using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Domain.Entity;
 using ApiRestaurant.Infrastucture.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,13 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
         public DishRepository(RestaurantContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
+        }
+        public async Task<List<Dish>> GetAllDishesWithIngredientsAsync()
+        {
+            return await _dbContext.Dishes
+                                 .Include(d => d.DishIngredients)
+                                 .ThenInclude(di => di.Ingredient)
+                             .ToListAsync();
         }
     }
 }
