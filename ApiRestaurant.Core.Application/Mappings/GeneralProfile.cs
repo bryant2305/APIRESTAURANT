@@ -24,13 +24,17 @@ namespace ApiRestaurant.Core.Application.Mappings
             CreateMap<Ingredient, IngredientUpdateDto>().ReverseMap();
             CreateMap<Ingredient, IngredientDto>().ReverseMap();
             #endregion
-
-            #region Dish
-            CreateMap<Dish, DishCreateDto>().ReverseMap();
-            CreateMap<Dish, DishUpdateDto>().ReverseMap();
             CreateMap<Dish, DishDto>()
-             .ForMember(dest => dest.Ingredients, opt => opt.MapFrom(src => src.DishIngredients.Select(di => di.Ingredient).ToList()));
-            #endregion
+                      .ForMember(dest => dest.Ingredients, opt => opt.MapFrom(src => src.Ingredients.Select(di => new IngredientDto
+                      {
+                          ID = di.IngredientId , 
+                          Name = di.Ingredient.Name
+                      }).ToList()));
+
+            CreateMap<DishCreateDto, Dish>()
+                .ForMember(dest => dest.Ingredients, opt => opt.MapFrom(src =>
+                    src.IngredientIds.Select(id => new DishIngredients {
+                        IngredientId = id , }).ToList()));
 
             #region Tables
             CreateMap<Mesas, TablesCreateDto>().ReverseMap();
@@ -39,13 +43,23 @@ namespace ApiRestaurant.Core.Application.Mappings
             #endregion
 
             #region Orders
-            CreateMap<Order, OrderCreateDto>().ReverseMap();
+            CreateMap<OrderCreateDto, Order>().ForMember(dest => dest.OrderDishes, opt => opt.MapFrom(src =>
+                    src.DishIds.Select(id => new OrderDish {
+                        DishID = id
+                    }).ToList()));
+
             CreateMap<Order, OrderUpdateDto>().ReverseMap();
             CreateMap<Order, OrderDto>()
-           .ForMember(dest => dest.Dishs, opt => opt.MapFrom(src => src.OrderDish.Select(od => od.Dish).ToList()));
-
-            #endregion
-
+            .ForMember(dest => dest.Dishes, opt => opt.MapFrom(src =>
+                src.OrderDishes.Select(od => new DishDto
+                {
+                    ID = od.DishID,
+                    Name = od.Dish.Name  // Asumiendo que tienes una relación de navegación a Dish
+                }).ToList()));
         }
+
+        #endregion
+
     }
-}
+    }
+

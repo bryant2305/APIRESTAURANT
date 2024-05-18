@@ -22,9 +22,17 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
         public async Task<List<Dish>> GetAllDishesWithIngredientsAsync()
         {
             return await _dbContext.Dishes
-                                 .Include(d => d.DishIngredients)
+                                 .Include(d => d.Ingredients)
                                  .ThenInclude(di => di.Ingredient)
                              .ToListAsync();
+        }
+        public async Task<Dish> GetADisheWithIngredientsAsync(int ingId)
+        {
+            return await _dbContext.Dishes
+                                 .Include(d => d.Ingredients
+                                 )
+                                 .ThenInclude(di => di.Ingredient)
+                             .FirstOrDefaultAsync(o => o.ID == ingId);
         }
     }
 }

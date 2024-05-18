@@ -63,11 +63,11 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.DishIngredients", b =>
                 {
-                    b.Property<int>("DishId")
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("IngredientId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime2");
@@ -75,7 +75,10 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ID")
+                    b.Property<int>("DishId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IngredientId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("LastModify")
@@ -84,7 +87,9 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     b.Property<string>("LastModifyBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DishId", "IngredientId");
+                    b.HasKey("ID");
+
+                    b.HasIndex("DishId");
 
                     b.HasIndex("IngredientId");
 
@@ -199,16 +204,16 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 
                     b.HasIndex("MesasID");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.OrderDish", b =>
                 {
-                    b.Property<int>("OrderID")
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("DishID")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime2");
@@ -216,7 +221,7 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ID")
+                    b.Property<int>("DishID")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("LastModify")
@@ -225,7 +230,14 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     b.Property<string>("LastModifyBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("OrderID", "DishID");
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DishID");
+
+                    b.HasIndex("OrderID");
 
                     b.ToTable("OrderDish");
                 });
@@ -233,13 +245,13 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.DishIngredients", b =>
                 {
                     b.HasOne("ApiRestaurant.Core.Domain.Entity.Dish", "Dish")
-                        .WithMany("DishIngredients")
+                        .WithMany("Ingredients")
                         .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApiRestaurant.Core.Domain.Entity.Ingredient", "Ingredient")
-                        .WithMany("DishIngredients")
+                        .WithMany("Ingredients")
                         .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -260,12 +272,12 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                 {
                     b.HasOne("ApiRestaurant.Core.Domain.Entity.Dish", "Dish")
                         .WithMany("OrderDishes")
-                        .HasForeignKey("OrderID")
+                        .HasForeignKey("DishID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApiRestaurant.Core.Domain.Entity.Order", "Order")
-                        .WithMany("OrderDish")
+                        .WithMany("OrderDishes")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -277,14 +289,14 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Dish", b =>
                 {
-                    b.Navigation("DishIngredients");
+                    b.Navigation("Ingredients");
 
                     b.Navigation("OrderDishes");
                 });
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Ingredient", b =>
                 {
-                    b.Navigation("DishIngredients");
+                    b.Navigation("Ingredients");
                 });
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Mesas", b =>
@@ -294,7 +306,7 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Order", b =>
                 {
-                    b.Navigation("OrderDish");
+                    b.Navigation("OrderDishes");
                 });
 #pragma warning restore 612, 618
         }

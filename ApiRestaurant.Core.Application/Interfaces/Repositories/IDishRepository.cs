@@ -10,5 +10,7 @@ namespace ApiRestaurant.Core.Application.Interfaces.Repositories
     public interface IDishRepository: IGenericRepository <Dish>
     {
         Task<List<Dish>> GetAllDishesWithIngredientsAsync();
+
+        Task<Dish> GetADisheWithIngredientsAsync(int ingId);
     }
 }

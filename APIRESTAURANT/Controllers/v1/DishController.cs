@@ -1,7 +1,9 @@
 ﻿using ApiRestaurant.Core.Application.DTOS.Dish;
+using ApiRestaurant.Core.Application.DTOS.Orders;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Domain.Entity;
+using ApiRestaurant.Infrastucture.Persistence.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -44,10 +46,13 @@ namespace APIRESTAURANT.Controllers.v1
                 }
 
                 Dish model = _mapper.Map<Dish>(dto);
-
                 await _dishRepository.AddAsync(model);
 
-                return Ok(model);
+                var DishWithingredients = await _dishRepository.GetADisheWithIngredientsAsync(model.ID);
+
+                var responseDto = _mapper.Map<DishDto>(DishWithingredients);
+
+                return Ok(responseDto);
             }
             catch (Exception ex)
             {

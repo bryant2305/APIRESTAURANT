@@ -22,4 +22,8 @@
     <ProjectReference Include="..\ApiRestaurant.Core.Domain\ApiRestaurant.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>

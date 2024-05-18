@@ -1,4 +1,6 @@
-﻿using ApiRestaurant.Core.Application.ViewModels.OrderDish;
+﻿
+using ApiRestaurant.Core.Application.DTOS.Tables;
+using ApiRestaurant.Core.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,6 @@ namespace ApiRestaurant.Core.Application.DTOS.Orders
 
         public string Status { get; set; }
 
-        public List<OrderDishViewModel> Orders { get; set; }
+        public List<int> DishIds { get; set; }
     }
 }
