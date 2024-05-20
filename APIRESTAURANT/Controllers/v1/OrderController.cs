@@ -1,7 +1,6 @@
 ﻿using ApiRestaurant.Core.Application.DTOS.Orders;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
-using ApiRestaurant.Core.Application.ViewModels.Orders;
 using ApiRestaurant.Core.Domain.Entity;
 using ApiRestaurant.Infrastucture.Persistence.Repositories;
 using AutoMapper;
@@ -43,11 +42,15 @@ namespace APIRESTAURANT.Controllers.v1
                     return NotFound();
                 }
 
-                Order model = _mapper.Map<Order>(dto);
+                var order = _mapper.Map<Order>(dto);
 
-                await _orderRepository.AddAsync(model);
+                await _orderRepository.AddAsync(order);
 
-                return Ok(model);
+                var orderWithDishes = await _orderRepository.GetOrderWithDishesAsync(order.ID);
+
+                var responseDto = _mapper.Map<OrderDto>(orderWithDishes);
+
+                return Ok(responseDto);
             }
             catch (Exception ex)
             {

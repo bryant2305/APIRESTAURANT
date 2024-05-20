@@ -17,6 +17,8 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
 
         public DbSet<Dish> Dishes { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -78,6 +80,7 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
             modelBuilder.Entity<Ingredient>().Property(medicos => medicos.Name).IsRequired();
             #endregion
 
+
             #region Dish
             modelBuilder.Entity<Dish>().Property(medicos => medicos.Name).IsRequired();
 
@@ -101,39 +104,11 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
 
             #region "Relationships"
 
-            //modelBuilder.Entity<Ingredient>().HasMany<DishIngredients>(i => i.Ingredients).WithOne(it => it.Ingredient).HasForeignKey(it => it.IngredientId)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Ingredient>().HasMany<DishIngredients>(i => i.Ingredients).WithOne(it => it.Ingredient).HasForeignKey(it => it.IngredientId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            //modelBuilder.Entity<Dish>().HasMany<DishIngredients>(dish => dish.Ingredients)
-            //              .WithOne(ingredients => ingredients.Dish).HasForeignKey(ingredients => ingredients.DishId).OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<DishIngredients>()
-           .HasKey(di => new { di.DishId, di.IngredientId });
-
-            modelBuilder.Entity<DishIngredients>()
-                .HasOne(di => di.Dish)
-                .WithMany(d => d.DishIngredients)
-                .HasForeignKey(di => di.DishId);
-
-            modelBuilder.Entity<DishIngredients>()
-                .HasOne(di => di.Ingredient)
-                .WithMany(i => i.DishIngredients)
-                .HasForeignKey(di => di.IngredientId);
-            ///
-
-            modelBuilder.Entity<OrderDish>()
-          .HasKey(di => new { di.OrderID, di.DishID });
-
-            modelBuilder.Entity<OrderDish>()
-                .HasOne(di => di.Order)
-                .WithMany(d => d.OrderDish)
-                .HasForeignKey(di => di.OrderID);
-
-            modelBuilder.Entity<DishIngredients>()
-                .HasOne(di => di.Dish)
-                .WithMany(i => i.DishIngredients)
-                .HasForeignKey(di => di.DishId);
-
+            modelBuilder.Entity<Dish>().HasMany<DishIngredients>(dish => dish.Ingredients)
+                          .WithOne(ingredients => ingredients.Dish).HasForeignKey(ingredients => ingredients.DishId).OnDelete(DeleteBehavior.Cascade);
 
 
             modelBuilder.Entity<Dish>().HasMany<OrderDish>(i => i.OrderDishes).WithOne(it => it.Dish).HasForeignKey(it => it.OrderID)
@@ -147,15 +122,15 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
             //modelBuilder.Entity<Order>().HasMany<OrderDish>(o => o.OrderDishes)
             //              .WithOne(o => o.Order).HasForeignKey(oi => oi.OrderID).OnDelete(DeleteBehavior.Cascade);
 
-        //    modelBuilder.Entity<OrderDish>()
-        //.HasOne(od => od.Order)
-        //.WithMany(o => o.OrderDishes)
-        //.HasForeignKey(od => od.OrderID);
+            modelBuilder.Entity<OrderDish>()
+        .HasOne(od => od.Order)
+        .WithMany(o => o.OrderDishes)
+        .HasForeignKey(od => od.OrderID);
 
-        //    modelBuilder.Entity<OrderDish>()
-        //        .HasOne(od => od.Dish)
-        //        .WithMany(d => d.OrderDishes)
-        //        .HasForeignKey(od => od.DishID);
+            modelBuilder.Entity<OrderDish>()
+                .HasOne(od => od.Dish)
+                .WithMany(d => d.OrderDishes)
+                .HasForeignKey(od => od.DishID);
 
         }
 

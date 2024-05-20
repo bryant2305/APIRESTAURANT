@@ -1,6 +1,6 @@
 ﻿using ApiRestaurant.Core.Application.DTOS.Dish;
 using ApiRestaurant.Core.Application.DTOS.Ingredients;
-using ApiRestaurant.Core.Application.ViewModels.OrderDish;
+using ApiRestaurant.Core.Application.DTOS.Tables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +18,6 @@ namespace ApiRestaurant.Core.Application.DTOS.Orders
 
         public string Status { get; set; }
 
-        public List<DishDto> Dishs { get; set; }
+        public List<DishDto> Dishes { get; set; }
     }
 }

@@ -34,6 +34,7 @@ builder.Services.AddControllers(options =>
     options.SuppressMapClientErrors = false;
 });
 
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 //builder.Services.AddDbContext<RestaurantContext>(options =>

@@ -12,8 +12,7 @@ namespace ApiRestaurant.Core.Domain.Entity
         public string DishSelected { get; set; }
         public string Subtotal { get; set; }
         public string Status { get; set; }
-        // public Mesas Mesas { get; set; } // Navigation property for Mesas
-        public List<OrderDish> OrderDish { get; set; }
+        public ICollection<OrderDish> OrderDishes { get; set; }
 
     }
 }

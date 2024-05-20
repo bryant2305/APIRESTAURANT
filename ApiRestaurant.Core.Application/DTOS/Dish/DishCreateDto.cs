@@ -1,4 +1,4 @@
-﻿using ApiRestaurant.Core.Application.ViewModels.DishIngredients;
+﻿using ApiRestaurant.Core.Application.DTOS.Ingredients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +22,6 @@ namespace ApiRestaurant.Core.Application.DTOS.Dish
 
         [Required(ErrorMessage = "You should add a Category")]
         public string Category { get; set; }
-        public List<DishIngredientViewModel> ingredients { get; set; }
+        public List<int> IngredientIds { get; set; }
     }
 }
