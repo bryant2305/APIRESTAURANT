@@ -10,12 +10,11 @@ namespace ApiRestaurant.Core.Application.DTOS.Tables
     public class TablesUpdateDto
     {
 
-        [Required(ErrorMessage = "Debe proporcionar el nombre")]
-        public string Nombre { get; set; }
+        public string Name { get; set; }
+        public int PeopleCuantity { get; set; }
 
-        [Required(ErrorMessage = "Debe proporcionar la cantidad maxima de personas que acepta la mesa")]
-        public int CantidadPersonas { get; set; }
-        public string Descripcion { get; set; }
-        public string Estado { get; set; }
+        public string Description { get; set; }
+        public int Status { get; set; }
+
     }
 }

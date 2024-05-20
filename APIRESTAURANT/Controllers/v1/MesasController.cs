@@ -1,4 +1,5 @@
 ﻿using ApiRestaurant.Core.Application.DTOS.Tables;
+using ApiRestaurant.Core.Application.Enums;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Domain.Entity;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 namespace APIRESTAURANT.Controllers.v1
 {
     [ApiVersion("1.0")]
+ 
     [ApiController]
     public class MesasController : BaseApiController
     {
@@ -27,7 +29,6 @@ namespace APIRESTAURANT.Controllers.v1
         }
 
         [HttpPost("Create")]
-        [Authorize(Roles = "Admin,SuperAdmin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -45,6 +46,7 @@ namespace APIRESTAURANT.Controllers.v1
                 {
                     return NotFound();
                 }
+                  dto.Status = (int)TableStatus.Available;
 
                 Mesas model = _mapper.Map<Mesas>(dto);
 
@@ -57,7 +59,6 @@ namespace APIRESTAURANT.Controllers.v1
             }
         }
 
-        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPut("Update")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -91,7 +92,6 @@ namespace APIRESTAURANT.Controllers.v1
         }
 
         [HttpGet("GET")]
-        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -114,7 +114,31 @@ namespace APIRESTAURANT.Controllers.v1
             }
         }
 
-        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
+      //  [Authorize(Roles = "Admin,SuperAdmin,Waither")]
+        [HttpGet("GetTableOrdenById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetOrderById(int ID)
+        {
+            try
+            {
+                var mesa = await _mesasRepository.GetOrderAsync(ID);
+
+                if (mesa == null)
+                {
+                    return NotFound();
+                }
+                var mesaDto = _mapper.Map<TablesDto>(mesa);
+
+                return Ok(mesaDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
         [HttpGet("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

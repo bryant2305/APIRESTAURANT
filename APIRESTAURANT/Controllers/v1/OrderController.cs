@@ -1,4 +1,5 @@
 ﻿using ApiRestaurant.Core.Application.DTOS.Orders;
+using ApiRestaurant.Core.Application.Enums;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Domain.Entity;
@@ -11,7 +12,7 @@ namespace APIRESTAURANT.Controllers.v1
 {
 
     [ApiVersion("1.0")]
-    [Authorize(Roles = "SuperAdmin,Waither")]
+    //[Authorize(Roles = "SuperAdmin,Waither")]
     [ApiController]
     public class OrderController : BaseApiController
     {
@@ -42,6 +43,9 @@ namespace APIRESTAURANT.Controllers.v1
                     return NotFound();
                 }
 
+
+                dto.Status = (int)OrderStatus.Process;
+
                 var order = _mapper.Map<Order>(dto);
 
                 // Añadir la entidad Order a la base de datos
@@ -63,7 +67,7 @@ namespace APIRESTAURANT.Controllers.v1
         }
 
         [HttpGet("GET")]
-        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
+        //[Authorize(Roles = "Admin,SuperAdmin,Waither")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -89,7 +93,7 @@ namespace APIRESTAURANT.Controllers.v1
             }
         }
 
-        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
+        //[Authorize(Roles = "Admin,SuperAdmin,Waither")]
         [HttpGet("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

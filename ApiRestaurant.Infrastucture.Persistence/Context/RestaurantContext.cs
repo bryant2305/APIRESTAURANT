@@ -68,13 +68,13 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
 
             #region "property config"
             #region "Tables"
-            modelBuilder.Entity<Mesas>().Property(medicos => medicos.Nombre).IsRequired();
+            modelBuilder.Entity<Mesas>().Property(medicos => medicos.Name).IsRequired();
 
-            modelBuilder.Entity<Mesas>().Property(medicos => medicos.Descripcion).IsRequired();
+            modelBuilder.Entity<Mesas>().Property(medicos => medicos.Description).IsRequired();
 
-            modelBuilder.Entity<Mesas>().Property(medicos => medicos.Estado).IsRequired();
+            modelBuilder.Entity<Mesas>().Property(medicos => medicos.Status).IsRequired();
 
-            modelBuilder.Entity<Mesas>().Property(medicos => medicos.CantidadPersonas).IsRequired();
+            modelBuilder.Entity<Mesas>().Property(medicos => medicos.PeopleCuantity).IsRequired();
             #endregion
             #region Ingredient
             modelBuilder.Entity<Ingredient>().Property(medicos => medicos.Name).IsRequired();
