@@ -15,7 +15,7 @@ namespace ApiRestaurant.Core.Application.DTOS.Orders
 
         public string Subtotal { get; set; }
 
-        public string Status { get; set; }
+        public int Status { get; set; }
 
         public List<int> DishIds { get; set; }
         public int TableId { get; set; }

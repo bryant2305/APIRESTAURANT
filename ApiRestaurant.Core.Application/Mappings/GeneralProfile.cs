@@ -39,7 +39,8 @@ namespace ApiRestaurant.Core.Application.Mappings
             #region Tables
             CreateMap<Mesas, TablesCreateDto>().ReverseMap();
             CreateMap<Mesas, TablesUpdateDto>().ReverseMap();
-            CreateMap<Mesas, TablesDto>().ReverseMap();
+            CreateMap<Mesas, TablesDto>()
+             .ForMember(dest => dest.Order, opt => opt.MapFrom(src => src.Orders));
             #endregion
 
             #region Orders

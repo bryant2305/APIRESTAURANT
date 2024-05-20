@@ -1,6 +1,7 @@
 ﻿using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Domain.Entity;
 using ApiRestaurant.Infrastucture.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,14 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
         public MesasRepository(RestaurantContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
+        }
+        public async Task<Mesas> GetOrderAsync(int mesaId)
+        {
+            return await _dbContext.Mesas
+             .Include(m => m.Orders)
+             .ThenInclude(o => o.OrderDishes)
+             .ThenInclude(od => od.Dish)
+             .FirstOrDefaultAsync(m => m.ID == mesaId);
         }
     }
 }
