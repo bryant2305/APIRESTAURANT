@@ -14,5 +14,8 @@ namespace ApiRestaurant.Core.Domain.Entity
         public string Status { get; set; }
         public ICollection<OrderDish> OrderDishes { get; set; }
 
+        public int TableId { get; set; }
+        public Mesas Tables { get; set; }
+
     }
 }

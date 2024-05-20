@@ -114,6 +114,11 @@ namespace ApiRestaurant.Infrastucture.Persistence.Context
             modelBuilder.Entity<Dish>().HasMany<OrderDish>(i => i.OrderDishes).WithOne(it => it.Dish).HasForeignKey(it => it.OrderID)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Mesas>()
+            .HasMany(m => m.Orders)
+            .WithOne(o => o.Tables)
+            .HasForeignKey(o => o.TableId);
+
             //modelBuilder.Entity<Dish>().HasMany<OrderDish>(i => i.OrderDishes).WithOne(it => it.Dish).HasForeignKey(it => it.OrderID)
             // .OnDelete(DeleteBehavior.Cascade);
 

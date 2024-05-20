@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ApiRestaurant.Infrastucture.Persistence.Repositories
 {
-    public class OrderRepository : GenericRepository <Order> , IOrderRepository
+    public class OrderRepository : GenericRepository<Order>, IOrderRepository
     {
         private readonly RestaurantContext _dbContext;
 
@@ -18,6 +18,14 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
+
+        public async Task<List<Order>> GetAllOrdersWithDishesAsync()
+        {
+            return await _dbContext.Orders
+                 .Include(o => o.OrderDishes)
+                 .ThenInclude(od => od.Dish).ToListAsync();
+        }
+
         public async Task<Order> GetOrderWithDishesAsync(int orderId)
         {
             return await _dbContext.Orders
@@ -25,5 +33,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
                 .ThenInclude(od => od.Dish)
                 .FirstOrDefaultAsync(o => o.ID == orderId);
         }
+       
     }
 }

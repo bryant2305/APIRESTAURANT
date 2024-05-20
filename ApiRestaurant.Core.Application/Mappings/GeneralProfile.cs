@@ -54,8 +54,10 @@ namespace ApiRestaurant.Core.Application.Mappings
                 src.OrderDishes.Select(od => new DishDto
                 {
                     ID = od.DishID,
-                    Name = od.Dish.Name  // Asumiendo que tienes una relación de navegación a Dish
-                }).ToList()));
+                    Name = od.Dish.Name,
+                    Category = od.Dish.Category,
+                    Ingredients = (List<IngredientDto>)od.Dish.Ingredients
+                }).ToList()));;
         }
 
         #endregion
