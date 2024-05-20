@@ -5,6 +5,7 @@ using ApiRestaurant.Core.Application.Interfaces.Services;
 using ApiRestaurant.Core.Domain.Entity;
 using ApiRestaurant.Infrastucture.Persistence.Repositories;
 using AutoMapper;
+using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -94,13 +95,17 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-               Dish mesasList = await _dishRepository.GetByIdAsync(ID);
-
-                if (mesasList == null)
+                if (ID == null || ID == 0)
                 {
                     return NotFound();
                 }
-                return Ok(mesasList);
+
+                var DishWithingredients = await _dishRepository.GetADisheWithIngredientsAsync(ID);
+
+                var responseDto = _mapper.Map<DishDto>(DishWithingredients);
+
+                return Ok(responseDto);
+  
             }
             catch (Exception ex)
             {

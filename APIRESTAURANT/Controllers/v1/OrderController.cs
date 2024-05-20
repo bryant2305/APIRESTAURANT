@@ -28,7 +28,7 @@ namespace APIRESTAURANT.Controllers.v1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody]OrderCreateDto dto)
+        public async Task<IActionResult> Create([FromBody] OrderCreateDto dto)
         {
             try
             {
@@ -44,13 +44,68 @@ namespace APIRESTAURANT.Controllers.v1
 
                 var order = _mapper.Map<Order>(dto);
 
+                // Añadir la entidad Order a la base de datos
                 await _orderRepository.AddAsync(order);
 
-                var orderWithDishes = await _orderRepository.GetOrderWithDishesAsync(order.ID);
 
-                var responseDto = _mapper.Map<OrderDto>(orderWithDishes);
+              var orderDish = await _orderRepository.GetOrderWithDishesAsync(order.ID);
+          
+                var responseDto = _mapper.Map<OrderDto>(orderDish);
 
                 return Ok(responseDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+
+        }
+
+        [HttpGet("GET")]
+        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                var orderList = await _orderRepository.GetAllOrdersWithDishesAsync();
+
+                if (orderList == null || orderList.Count == 0)
+                {
+
+                    return NotFound();
+                }
+
+                var responseDto = _mapper.Map<List<OrderDto>>(orderList);
+
+                return Ok(responseDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "Admin,SuperAdmin,Waither")]
+        [HttpGet("GetById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetById(int ID)
+        {
+            try
+            {
+                var mesa = await _orderRepository.GetOrderWithDishesAsync(ID);
+
+                if (mesa == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(mesa);
             }
             catch (Exception ex)
             {

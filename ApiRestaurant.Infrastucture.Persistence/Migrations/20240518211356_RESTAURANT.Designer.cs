@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 {
     [DbContext(typeof(RestaurantContext))]
-    [Migration("20240518174930_RESTAURANT")]
+    [Migration("20240518211356_RESTAURANT")]
     partial class RESTAURANT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,9 +191,6 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                     b.Property<string>("LastModifyBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MesasID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -202,9 +199,12 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TableId")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("MesasID");
+                    b.HasIndex("TableId");
 
                     b.ToTable("Orders");
                 });
@@ -265,9 +265,13 @@ namespace ApiRestaurant.Infrastucture.Persistence.Migrations
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.Order", b =>
                 {
-                    b.HasOne("ApiRestaurant.Core.Domain.Entity.Mesas", null)
+                    b.HasOne("ApiRestaurant.Core.Domain.Entity.Mesas", "Tables")
                         .WithMany("Orders")
-                        .HasForeignKey("MesasID");
+                        .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tables");
                 });
 
             modelBuilder.Entity("ApiRestaurant.Core.Domain.Entity.OrderDish", b =>

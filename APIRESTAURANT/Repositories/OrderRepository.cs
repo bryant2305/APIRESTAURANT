@@ -25,5 +25,11 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
                 .ThenInclude(od => od.Dish)
                 .FirstOrDefaultAsync(o => o.ID == orderId);
         }
+        public async Task<List<Order>> GetAllOrdersWithDishesAsync()
+        {
+            return await _dbContext.Orders
+                 .Include(o => o.OrderDishes)
+                 .ThenInclude(od => od.Dish).ToListAsync();
+        }
     }
 }

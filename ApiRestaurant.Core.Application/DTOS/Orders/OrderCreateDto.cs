@@ -18,5 +18,8 @@ namespace ApiRestaurant.Core.Application.DTOS.Orders
         public string Status { get; set; }
 
         public List<int> DishIds { get; set; }
+        public int TableId { get; set; }
+
+        //public List<int> Table { get; set; }
     }
 }
