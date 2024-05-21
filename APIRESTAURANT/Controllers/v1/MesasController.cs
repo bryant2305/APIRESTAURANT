@@ -91,6 +91,7 @@ namespace APIRESTAURANT.Controllers.v1
             }
         }
 
+
         [HttpGet("GET")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -155,6 +156,44 @@ namespace APIRESTAURANT.Controllers.v1
                 }
               
                 return Ok(mesa);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPut("ChangeStatus")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ChangeStatus(int ID, [FromBody] ChangeStatusTableDto dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                var existingTable = await _mesasRepository.GetByIdAsync(ID);
+                if (existingTable == null || ID == 0)
+                {
+                    return NotFound();
+                }
+
+                if(dto.Status < 1 || dto.Status > 3)
+                {
+                    return BadRequest("PLEASE TYPE A VALID STATUS");
+                }
+
+                // Actualiza las propiedades de la entidad existente con los valores del DTO
+                _mapper.Map(dto, existingTable);
+
+
+                await _mesasRepository.UpdateAsync(existingTable, ID);
+                await _mesasRepository.SaveChangesAsync();
+                return Ok(existingTable);
             }
             catch (Exception ex)
             {
