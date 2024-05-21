@@ -1,4 +1,5 @@
 ﻿using ApiRestaurant.Core.Application.DTOS.Orders;
+using ApiRestaurant.Core.Application.DTOS.Tables;
 using ApiRestaurant.Core.Application.Enums;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
@@ -110,6 +111,81 @@ namespace APIRESTAURANT.Controllers.v1
                 }
 
                 return Ok(mesa);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut("Update")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Update(int ID, [FromBody] OrderUpdateDto dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                var existingOrder = await _orderRepository.GetOrderWithDishesAsync(ID);
+                if (existingOrder == null || ID == 0)
+                {
+                    return NotFound();
+                }
+
+                // Eliminar los OrderDishes existentes
+                existingOrder.OrderDishes.Clear();
+
+                // Agregar los nuevos OrderDishes basados en DishIds del dto
+                foreach (var dishId in dto.DishIds)
+                {
+                    existingOrder.OrderDishes.Add(new OrderDish
+                    {
+                        DishID = dishId,
+                        OrderID = ID // Asegurarse de establecer el OrderID correctamente
+                    });
+                }
+
+                // Actualizar la orden en la base de datos
+                await _orderRepository.UpdateAsync(existingOrder, ID);
+                await _orderRepository.SaveChangesAsync();
+
+                // Vuelve a cargar las entidades relacionadas si es necesario para la respuesta
+                var updatedOrder = await _orderRepository.GetOrderWithDishesAsync(existingOrder.ID);
+
+                // Mapear la entidad actualizada al DTO de respuesta
+                var responseDto = _mapper.Map<OrderDto>(updatedOrder);
+
+                return Ok(responseDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "SuperAdmin")]
+        [HttpDelete("Delete")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Delete(int ID)
+        {
+            try
+            {
+                var order = await _orderRepository.GetByIdAsync(ID);
+
+                if (order == null)
+                {
+                    return NotFound();
+                }
+                await _orderRepository.DeleteAsync(order);
+
+                return Ok(order);
             }
             catch (Exception ex)
             {
