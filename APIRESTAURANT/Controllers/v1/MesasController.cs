@@ -46,7 +46,14 @@ namespace APIRESTAURANT.Controllers.v1
                 {
                     return NotFound();
                 }
-                  dto.Status = (int)TableStatus.Available;
+               
+                dto.Status = (int)TableStatus.Available;
+
+                if (dto.Status < 1 || dto.Status > 3)
+                {
+                    return BadRequest("PLEASE TYPE A VALID STATUS");
+                }
+
 
                 Mesas model = _mapper.Map<Mesas>(dto);
 
