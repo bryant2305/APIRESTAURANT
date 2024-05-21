@@ -1,4 +1,5 @@
-﻿using ApiRestaurant.Core.Application.DTOS.Tables;
+﻿using ApiRestaurant.Core.Application.DTOS.Orders;
+using ApiRestaurant.Core.Application.DTOS.Tables;
 using ApiRestaurant.Core.Application.Enums;
 using ApiRestaurant.Core.Application.Interfaces.Repositories;
 using ApiRestaurant.Core.Application.Interfaces.Services;
@@ -20,12 +21,14 @@ namespace APIRESTAURANT.Controllers.v1
     public class MesasController : BaseApiController
     {
         private readonly IMesasRepository _mesasRepository;
+        private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
 
-        public MesasController(IMesasRepository mesasRepository , IMapper mapper)
+        public MesasController(IMesasRepository mesasRepository , IMapper mapper , IOrderRepository orderRepository)
         {
             _mesasRepository = mesasRepository;
             _mapper = mapper;
+            _orderRepository = orderRepository;
         }
 
         [HttpPost("Create")]
@@ -107,14 +110,17 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-                var mesasList = await _mesasRepository.GetAllAsync();
+                var orderList = await _orderRepository.GetAllOrdersWithDishesAsync();
 
-                if (mesasList == null || mesasList.Count == 0)
+                if (orderList == null || orderList.Count == 0)
                 {
 
                     return NotFound();
                 }
-                return Ok(mesasList);
+
+                var responseDto = _mapper.Map<List<TablesDto>>(orderList);
+
+                return Ok(responseDto);
             }
             catch (Exception ex)
             {

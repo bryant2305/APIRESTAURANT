@@ -10,5 +10,7 @@ namespace ApiRestaurant.Core.Application.Interfaces.Repositories
     public interface IMesasRepository : IGenericRepository<Mesas>
     {
         Task<Mesas> GetOrderAsync(int mesaId);
+
+        Task<List<Mesas>> GetAllMesasWithOrderAsync();
     }
 }
