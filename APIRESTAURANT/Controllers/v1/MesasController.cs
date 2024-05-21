@@ -21,14 +21,12 @@ namespace APIRESTAURANT.Controllers.v1
     public class MesasController : BaseApiController
     {
         private readonly IMesasRepository _mesasRepository;
-        private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
 
-        public MesasController(IMesasRepository mesasRepository , IMapper mapper , IOrderRepository orderRepository)
+        public MesasController(IMesasRepository mesasRepository , IMapper mapper)
         {
             _mesasRepository = mesasRepository;
             _mapper = mapper;
-            _orderRepository = orderRepository;
         }
 
         [HttpPost("Create")]
@@ -110,7 +108,7 @@ namespace APIRESTAURANT.Controllers.v1
         {
             try
             {
-                var orderList = await _orderRepository.GetAllOrdersWithDishesAsync();
+                var orderList = await _mesasRepository.GetAllMesasWithOrderAsync();
 
                 if (orderList == null || orderList.Count == 0)
                 {

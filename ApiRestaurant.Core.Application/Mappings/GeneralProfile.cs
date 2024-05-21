@@ -60,7 +60,7 @@ namespace ApiRestaurant.Core.Application.Mappings
                     ID = od.DishID,
                     Name = od.Dish.Name,
                     Category = od.Dish.Category,
-                    Ingredients = (List<IngredientDto>)od.Dish.Ingredients
+                    //Ingredients = (List<IngredientDto>)od.Dish.Ingredients
                 }).ToList()));;
         }
 
