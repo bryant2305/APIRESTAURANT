@@ -109,8 +109,9 @@ namespace APIRESTAURANT.Controllers.v1
                 {
                     return NotFound();
                 }
+                var responseDto = _mapper.Map<OrderDto>(mesa);
 
-                return Ok(mesa);
+                return Ok(responseDto);
             }
             catch (Exception ex)
             {

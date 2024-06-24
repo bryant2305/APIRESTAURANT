@@ -18,6 +18,14 @@ namespace ApiRestaurant.Infrastucture.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
+        public async Task<List<Mesas>> GetAllMesasWithOrderAsync()
+        {
+            return await _dbContext.Mesas
+             .Include(m => m.Orders)
+             .ThenInclude(o => o.OrderDishes)
+             .ThenInclude(od => od.Dish).ToListAsync();
+        }
+
         public async Task<Mesas> GetOrderAsync(int mesaId)
         {
             return await _dbContext.Mesas
