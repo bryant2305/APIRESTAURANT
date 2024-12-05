@@ -1,46 +1,40 @@
-# Archivos de compilación
-bin/
-obj/
-out/
-
-# Archivos de usuario y configuración local
-*.user
+# Archivos y directorios generados por Visual Studio
+.vs/
 *.suo
+*.user
 *.userosscache
 *.sln.docstates
 
-# Archivos de paquetes
-packages/
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de paquetes NuGet
 *.nupkg
-*.snupkg
-
-# Archivos de lock o restauración
 project.lock.json
-project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Archivos de configuración temporales
+*.dbmdl
+*.pidb
+
+# Archivos generados por diseño
 *.log
-
-# Configuración de Visual Studio
-.vscode/
-.vs/
-*.code-workspace
-
-# Archivos de sistema operativo
-Thumbs.db
-ehthumbs.db
-*.DS_Store
-*.directory
-
-# Archivos temporales y de caché
-*.~*
-*.swp
+*.cache
+*.pdb
+*.dll
+*.exe
 *.tmp
-*.bak
-*.old
-*.log
+*.json.schemastore
 
-# Archivos de publicación
-*.publishsettings
-PublishScripts/
+# Archivos relacionados con Sourcelink
+*.sourcelink.json
 
-# Archivos de dependencias
-node_modules/
+# Archivos de configuración de usuario local
+*.vsconfig
+*.settings
+
+# Archivos específicos de depuración
+*.vscode/
+apphost.exe
