@@ -1,2 +1,46 @@
-# Ignorar el directorio FileContentIndex dentro de .vs
-.vs/APIRESTAURANT/FileContentIndex/
+# Archivos de compilación
+bin/
+obj/
+out/
+
+# Archivos de usuario y configuración local
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de paquetes
+packages/
+*.nupkg
+*.snupkg
+
+# Archivos de lock o restauración
+project.lock.json
+project.fragment.lock.json
+*.log
+
+# Configuración de Visual Studio
+.vscode/
+.vs/
+*.code-workspace
+
+# Archivos de sistema operativo
+Thumbs.db
+ehthumbs.db
+*.DS_Store
+*.directory
+
+# Archivos temporales y de caché
+*.~*
+*.swp
+*.tmp
+*.bak
+*.old
+*.log
+
+# Archivos de publicación
+*.publishsettings
+PublishScripts/
+
+# Archivos de dependencias
+node_modules/
