@@ -54,9 +54,7 @@ namespace APIRESTAURANT.Controllers.v1
             try
             {
                 var mesasList = await _idishService.GetAllAsync();
-
-
-
+                //
                 if (mesasList == null || mesasList.Count == 0)
                 {
                     return NotFound();
